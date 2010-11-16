@@ -9,10 +9,16 @@
     <link>update.improvingworks.com/rss.xml</link>
     <description>News feed for new Infinitest releases</description>
     <item>
+      <title>Infinitest for Eclipse 5.1.82 released - Simplified Maven Configuration</title>
+      <link>ReleaseNotes.txt</link>
+      <pubDate>Tue, 16 Nov 2010 11:36:17 +0100</pubDate>
+      <dc:date>2010-11-16T11:36:17.430705+01:00</dc:date>
+    </item>
+    <item>
       <title>Infinitest for Eclipse 5.1.81 released - Built with Google Guava and Latest JUnit 4.8.2</title>
       <link>ReleaseNotes.txt</link>
       <pubDate>Mon, 15 Nov 2010 15:08:16 +0100</pubDate>
-      <dc:date>2010-11-15T15:08:16.0130+01:00</dc:date>
+      <dc:date>2010-11-15T15:08:16+01:00</dc:date>
     </item>
     <item>
       <title>Infinitest for Eclipse 5.1.80 released - First GPL version</title>

@@ -22,7 +22,6 @@
 package org.infinitest.parser;
 
 import static com.google.common.collect.Sets.*;
-import static org.jgrapht.Graphs.*;
 
 import java.io.File;
 import java.util.Collection;
@@ -30,9 +29,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.infinitest.ClasspathProvider;
-import org.jgrapht.DirectedGraph;
-import org.jgrapht.graph.DefaultDirectedGraph;
-import org.jgrapht.graph.DefaultEdge;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Sets;
@@ -40,7 +36,7 @@ import com.google.common.collect.Sets;
 public class ClassFileIndex
 {
     private final ClassBuilder builder;
-    private DirectedGraph<JavaClass, DefaultEdge> graph;
+    private JavaClassGraph graph;
 
     public ClassFileIndex(ClasspathProvider classpath)
     {
@@ -51,7 +47,7 @@ public class ClassFileIndex
     ClassFileIndex(ClassBuilder classBuilder)
     {
         builder = classBuilder;
-        graph = new DefaultDirectedGraph<JavaClass, DefaultEdge>(DefaultEdge.class);
+        graph = new JavaClassGraph();
     }
 
     public Set<JavaClass> findClasses(Collection<File> changedFiles)
@@ -112,7 +108,7 @@ public class ClassFileIndex
 
     private List<JavaClass> getParents(JavaClass childClass)
     {
-        return predecessorListOf(graph, childClass);
+        return graph.predecessorListOf(childClass);
     }
 
     private void replaceVertex(JavaClass newClass)
@@ -177,7 +173,7 @@ public class ClassFileIndex
 
     public void clear()
     {
-        graph = new DefaultDirectedGraph<JavaClass, DefaultEdge>(DefaultEdge.class);
+        graph = new JavaClassGraph();
     }
 
     public boolean isIndexed(Class<Object> clazz)
